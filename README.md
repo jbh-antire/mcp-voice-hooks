@@ -60,11 +60,17 @@ Restart Claude Code. Set `"mcp-voice-hooks-plugin@mcp-voice-hooks-marketplace"` 
 claude
 ```
 
-### 2. Start Listening
+### 2. Open the Voice UI
 
-The browser interface will automatically open after 3 seconds (<http://localhost:5111>).
+Voice mode does not open automatically. When you want it, run the `/voice-mode` command in Claude Code to open the browser interface (<http://localhost:5111>):
+
+```
+/voice-mode
+```
 
 Click "Start Listening"
+
+(To restore the old behavior of auto-opening the browser on every startup, set `MCP_VOICE_HOOKS_AUTO_OPEN_BROWSER=true` — see [Browser Auto-Open](#browser-auto-open).)
 
 ### 3. Speak
 
@@ -181,12 +187,12 @@ To regenerate the certificate (e.g., after a hostname change), delete the `certs
 
 #### Browser Auto-Open
 
-When running in MCP-managed mode, the browser will automatically open if no frontend connects within 3 seconds. To disable this behavior:
+By default the browser does not open automatically — use the `/voice-mode` command to open the UI on demand. To restore automatic opening (the browser opens in MCP-managed mode if no frontend connects within 3 seconds), set:
 
 ```json
 {
   "env": {
-    "MCP_VOICE_HOOKS_AUTO_OPEN_BROWSER": "false"
+    "MCP_VOICE_HOOKS_AUTO_OPEN_BROWSER": "true"
   }
 }
 ```

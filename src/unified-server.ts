@@ -1957,7 +1957,7 @@ httpServer.listen(HTTP_PORT, async () => {
 
   // Auto-open browser if no frontend connects within 3 seconds
   // Skip for secondary instances that detected EADDRINUSE
-  const autoOpenBrowser = process.env.MCP_VOICE_HOOKS_AUTO_OPEN_BROWSER !== 'false'; // Default to true
+  const autoOpenBrowser = process.env.MCP_VOICE_HOOKS_AUTO_OPEN_BROWSER === 'true'; // Default to false; use the /voice command to open the UI on demand
   if (IS_MCP_MANAGED && autoOpenBrowser) {
     setTimeout(async () => {
       if (ttsClients.size === 0 && wsAudioClients.size === 0) {
